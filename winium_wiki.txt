@@ -1,0 +1,255 @@
+
+Skip to content
+
+    Pull requests
+    Issues
+    Marketplace
+    Explore
+
+    @RMorrisby
+
+79
+225
+
+    94
+
+2gis/Winium.Desktop
+Code
+Issues 138
+Pull requests 8
+Projects 1
+Wiki
+Insights
+Supported Commands
+Saikat edited this page on 19 Sep · 8 revisions
+
+Winium.Desktop implements subset of JSON Wire Protocol
+Supported commands
+ClearElementText
+
+POST /session/:sessionId/element/:id/clear Clear a text the element.
+
+element.clear()
+
+ClickElement
+
+POST /session/:sessionId/element/:id/click Click on an element.
+
+element.click()
+
+Close
+
+DELETE /session/:sessionId/window Close the associated application.
+
+driver.close()
+
+ElementEquals
+
+GET /session/:sessionId/element/:id/equals/:other Test if two element IDs refer to the same visual-tree element.
+ExecuteScript
+
+For details see Command Execute Script
+
+POST /session/:sessionId/execute Execute custom command.
+
+driver.execute_script('input: ctrl_click')
+
+FindChildElement
+
+POST /session/:sessionId/element/:id/element Search for an element on the page, starting from the identified element.
+
+See Finding Elements for supported strategies.
+
+parent = find_element_by_name(name1)
+parent.find_element_by_id(id_)
+# see FindElement above
+
+FindChildElements
+
+POST /session/:sessionId/element/:id/elements Search for multiple elements on the page, starting from the identified element.
+
+parent = find_element_by_name(name1)
+parent.find_elements_by_name(name2)
+# see FindElements above
+
+FindElement
+
+POST /session/:sessionId/element Search for an element on the page, starting from the desktop root.
+
+See Finding Elements for supported strategies.
+
+# find by AutomationProperties.AutomationId
+driver.find_element_by_id(id_)
+# find by Name
+driver.find_element_by_name(name)
+
+FindElements
+
+POST /session/:sessionId/elements Search for multiple elements on the page, starting from the desktop root.
+
+See Finding Elements for supported strategies.
+
+driver.find_elements_by_class_name('System.Windows.Controls.TextBlock')
+driver.find_elements_by_tag_name('System.Windows.Controls.TextBlock')
+
+# find by AutomationProperties.AutomationId
+driver.find_elements_by_id(id_)
+# find by Name
+driver.find_elements_by_name(name)
+
+GetActiveElement
+
+POST /session/:sessionId/element/active Get the element on the page that currently has focus.
+
+driver.switch_to.active_element()
+
+GetElementAttribute
+
+GET /session/:sessionId/element/:id/attribute/:name Get the value of an element's attribute. Supported attributes it is automation properties from AutomationElementIdentifiers class.
+
+# get by full property name
+element.get_attribute('IsEnabledProperty')
+# get by short property name
+element.get_attribute('IsEnabled')
+
+GetElementSize
+
+GET /session/:sessionId/element/:id/size Determine an element's size in pixels.
+
+element.size()
+
+GetElementText
+
+GET /session/:sessionId/element/:id/text Returns the visible text for the element.
+
+element.text
+
+ImplicitlyWait
+
+POST /session/:sessionId/timeouts/implicit_wait Set the amount of time the driver should wait when searching for elements.
+
+driver.implicitly_wait(10)
+
+IsElementDisplayed
+
+GET /session/:sessionId/element/:id/displayed Determine if an element is currently displayed by IsOffscreen property.
+
+element.is_displayed()
+
+IsElementEnabled
+
+GET /session/:sessionId/element/:id/enabled Determine if an element is currently enabled.
+
+element.is_enabled()
+
+IsElementSelected
+
+GET /session/:sessionId/element/:id/selected Get SelectionItemPattern.IsSelectedProperty value.
+
+element.is_selected()
+
+MouseClick
+
+POST /session/:sessionId/click Click any mouse button (at the coordinates set by the last moveto command).
+
+# see more http://selenium-python.readthedocs.org/en/latest/api.html#module-selenium.webdriver.common.action_chains
+actions = ActionChains(driver)
+# ...
+actions.click()
+actions.perform()
+
+MouseDoubleClick
+
+POST /session/:sessionId/doubleclick Double-clicks at the current mouse coordinates (set by moveto).
+
+# see more http://selenium-python.readthedocs.org/en/latest/api.html#module-selenium.webdriver.common.action_chains
+actions = ActionChains(driver)
+# ...
+actions.double_click()
+actions.perform()
+
+MouseMoveTo
+
+POST /session/:sessionId/moveto Move the mouse by an offset of the specificed element.
+
+# see more http://selenium-python.readthedocs.org/en/latest/api.html#module-selenium.webdriver.common.action_chains
+actions = ActionChains(driver)
+# ...
+actions.move_by_offset(xoffset, yoffset)
+actions.perform()
+
+NewSession
+
+POST /session Create a new session.
+Quit
+
+DELETE /session/:sessionId Delete the session.
+
+driver.quit()
+
+Screenshot
+
+GET /session/:sessionId/screenshot Take a screenshot of the current page.
+
+driver.get_screenshot_as_base64()
+driver.get_screenshot_as_file(filename)
+driver.get_screenshot_as_png()
+
+SendKeysToActiveElement
+
+POST /session/:sessionId/keys Send a sequence of key strokes to active element.
+
+action = ActionChains(driver)
+action.send_keys(text)
+
+SendKeysToElement
+
+POST /session/:sessionId/element/:id/value Send a sequence of key strokes to an element.
+
+element.send_keys(text)
+
+Status
+
+GET /status Query the server's current status.
+SubmitElement
+
+POST /session/:sessionId/element/:id/submit Simulate pressing Enter key.
+
+element.submit()
+
+Add a custom footer
+Pages 10
+
+Home
+
+Presentations, Talks, Demos
+
+Usage
+
+    Capabilities
+    Supported Commands
+    Finding Elements
+    Command Execute Script
+    Command Line Options
+
+Writing tests
+
+    Magic Samples
+
+Clone this wiki locally
+
+    © 2018 GitHub, Inc.
+    Terms
+    Privacy
+    Security
+    Status
+    Help
+
+    Contact GitHub
+    Pricing
+    API
+    Training
+    Blog
+    About
+
+Press h to open a hovercard with more details.
